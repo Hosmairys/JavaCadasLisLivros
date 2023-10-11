@@ -39,10 +39,12 @@ public class Main {
 
                     if (lacamento.getYears() >= 5) {
                         System.out.println("Data de lançamento válida!");
-                    }else {
+                    } else {
                         System.out.println("Data de lançamento inválida");
                         break;
                     }
+
+                    leitor.nextLine();
 
                     System.out.println("Digite o nome do Autor: ");
                     novoLivro.autor.nome = leitor.nextLine();
@@ -55,15 +57,31 @@ public class Main {
                     break;
 
                 case "2":
-                    System.out.println("2");
+                    if (listaLv.size() > 0) {
+
+                        for (Livro cadaLv : listaLv){
+                            System.out.println("Titulo: " + cadaLv.titulo);
+                            System.out.println("Autor: " + cadaLv.autor.nome);
+                            System.out.println("Preço: " + cadaLv.preco);
+                            System.out.println("Data de lançamento: " + cadaLv.dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                            System.out.println("Local de Nacimento: " + cadaLv.autor.localNac);
+
+
+                            System.out.println();
+                            System.out.println("Aperte ENTER para continuar");
+                            leitor.nextLine();
+                        }
+
+                    } else {
+                        System.out.println("Lista vazia!");
+                    }
                     break;
 
                 case "0":
-                    System.out.println("Volta");
+                    System.out.println("Saindo do sistema...");
                     break;
 
                 default:
-                    System.out.println("Opção inválida!");
                     break;
             }
 
